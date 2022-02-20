@@ -1,10 +1,16 @@
 import { add, getDaysInMonth, sub } from 'date-fns'
-import { json, LoaderFunction, useLoaderData } from 'remix'
+import { json, LoaderFunction, MetaFunction, useLoaderData } from 'remix'
 import languageParser from 'accept-language-parser'
 import { daysOfWeek, getOffsetFromFirstMonday } from '~/utils/dates'
 import { useState } from 'react'
 
 type LoaderData = { locale: string }
+
+export const meta: MetaFunction = () => {
+  return {
+    title: 'Habibit | Habits made simple',
+  }
+}
 
 export let loader: LoaderFunction = async ({ request }) => {
   const acceptLanguage = request.headers.get('accept-language') as
